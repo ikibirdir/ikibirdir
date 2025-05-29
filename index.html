@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>My Site</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="three-col-layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="company-name"><a href="index.html">ikibirdir</a></div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </aside>
+
+    <!-- Scrollable content + images -->
+    <div class="scroll-area">
+      <!-- Content panel -->
+      <main class="content">
+        <h1>poems</h1>
+        
+        <!-- ▼▼▼ Details/summary sections ▼▼▼ -->
+        <details>
+          <summary>Listening to Yo-Yo Ma</summary>
+          <p>
+            sun-ra maya<br>
+            sweet torpedo kiss<br>
+            forming me sound—<br>
+            forming me dance<br>
+            as word was not yet—
+          </p>
+        </details>
+
+        <details>
+          <summary>At the clinic</summary>
+          <p>Your “At the clinic meawo” text goes here.</p>
+        </details>
+
+        <details>
+          <summary>Boy</summary>
+          <p>Your “Boy” text goes here.</p>
+        </details>
+
+        <details>
+          <summary>Mantra</summary>
+          <p>Your “Mantra” text (shown by default because of the <code>open</code> attribute).</p>
+        </details>
+
+        <details>
+          <summary>tummy full</summary>
+          <p>Your “tummy full” text goes here.</p>
+          <div id="digital-clock" class="digital-clock">00:00:00</div>
+        </details>
+
+        <details>
+          <summary>Intruder</summary>
+          <p>Your “Intruder” text goes here.</p>
+        </details>
+
+        <details>
+          <summary>pocket</summary>
+          <p>Your “pocket” text goes here.</p>
+        </details>
+
+        <details>
+          <summary>driftwood chant</summary>
+          <p>Your “driftwood chant” text goes here.</p>
+        </details>
+        <!-- ▲▲▲ end details/summary blocks ▲▲▲ -->
+
+      </main>
+    </div>
+  </div>
+
+ 
+
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2,'0');
+      const m = String(now.getMinutes()).padStart(2,'0');
+      const s = String(now.getSeconds()).padStart(2,'0');
+      document.querySelectorAll('#digital-clock').forEach(el => {
+        el.textContent = `${h}:${m}:${s}`;
+      });
+    }
+    // initialize and update every second
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
+</body>
+</html>

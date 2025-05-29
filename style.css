@@ -1,0 +1,264 @@
+/*
+Theme Name:     My Theme
+Author:         Your Name
+Description:    Desktop: fixed 20vw sidebar, 30vw content, 50vw image-panel; Mobile ≤800px: stacked.
+Version:        1.2.5
+Text Domain:    my-theme
+*/
+
+/* 0) Import Manrope */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+
+/* 1) Reset & Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+  font-family: 'Manrope', sans-serif;
+  background: #000;
+  color: #f3f4f6;
+}
+
+/* 2) Outer wrapper */
+.three-col-layout {
+  display: flex;
+  flex-wrap: nowrap;
+  min-height: 100vh;
+}
+
+/* 3) Sidebar (fixed 20vw) */
+.sidebar {
+  position: fixed;
+  top: 1rem;
+  left: 0;
+  width: 20vw;
+  height: calc(100vh - 1rem);
+  background: #000;
+  padding: 2rem;
+  padding-top: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  z-index: 1000;
+}
+.company-name {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.sidebar ul { list-style: none; }
+.sidebar li { margin-bottom: 0; }
+.sidebar li > a {
+  display: block;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #f3f4f6;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.sidebar a:hover { color: #a0aec0; }
+
+/* 4) Scroll-area (to the right of sidebar) */
+.scroll-area {
+  margin-left: 20vw;
+  display: flex;
+  flex-wrap: nowrap;
+  min-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.sidebar:hover ~ .scroll-area {
+  overflow-y: hidden;
+}
+
+/* style the company-name link again */
+.sidebar .company-name a {
+  display: block;
+  font-size: 1rem;         /* same as .company-name */
+  font-weight: 700;        /* bold */
+  color: #f3f4f6;          /* match your sidebar links */
+  text-decoration: none;
+  margin-bottom: 1rem;     /* same spacing you had on the div */
+  transition: color 0.2s;  /* if you want a hover effect */
+}
+
+/* optional hover state */
+.sidebar .company-name a:hover {
+  color: #a0aec0;
+}
+
+
+/* 5) Content panel (30vw) */
+.content {
+  flex: 0 0 30vw;
+  max-width: 30vw;
+  background: #000;
+  padding: 1rem;
+  margin-bottom: 20rem;
+  overflow-y: auto;
+}
+.content h1 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.content h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 1.5rem 0;
+}
+.content p {
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* 6) Image panel (50vw) */
+.image-panel {
+  flex: 0 0 50vw;
+  width: 50vw;
+  max-width: 50vw;
+  background: #000;
+  padding: 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.image-panel .image-wrapper {
+  width: 100%;
+}
+.image-panel .image-wrapper img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;       /* maintain aspect ratio */
+}
+
+/* 7) Hide default WP footer */
+.site-footer {
+  display: none !important;
+}
+
+/* 8) Mobile (≤800px): stacked layout */
+@media (max-width: 800px) {
+  /* stack everything vertically */
+  .three-col-layout {
+    flex-direction: column;
+  }
+
+  /* sidebar becomes full-width, in-flow */
+  .sidebar {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 1rem 2rem !important;
+    margin: 0 !important;
+    overscroll-behavior: auto !important;
+  }
+
+  /* the wrapper now stacks its children too */
+  .scroll-area {
+    margin-left: 0 !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    overflow-y: auto !important;
+  }
+
+  /* force content to come first and fill width */
+  .content {
+    order: 1;
+    flex: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 2rem !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* then image-panel, full width */
+  .image-panel {
+    order: 2;
+    flex: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 2rem !important;
+  }
+}
+
+/* 9) Digital Clock Styling */
+.digital-clock {
+  font-family: monospace;
+  font-size: 1rem;
+  color: #0f0;
+  background: #232323;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  border-radius: 4px;
+}
+@media (max-width: 800px) {
+  .digital-clock {
+    font-size: 13px;
+    padding: 0.5rem;
+  }
+}
+
+/* 10) Details summary styling */
+.content details > summary {
+  color: #ff0;
+  font-size: 13px;
+  padding: 0;
+  cursor: pointer;
+}
+.content details > summary * {
+  background-color: transparent;
+  color: inherit;
+}
+
+/* Force all images in the panel to fill its width */
+.image-panel img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
+/* hide default marker */
+details summary::-webkit-details-marker { display: none; }
+details summary::marker                { font-size: 0; }
+
+/* style the summary line + custom arrow */
+details summary {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 400;
+  color: #ff0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+details summary::before {
+  content: "▶";
+  display: inline-block;
+  font-size: 8px;
+  transition: transform 0.2s ease;
+}
+
+details[open] summary::before {
+  transform: rotate(90deg);
+}
+
+/* Optional: style the content inside */
+details p {
+  margin: 0.5em 0 1em 1.2em;
+  font-size: 13px;
+  color: #fff;
+}
+
