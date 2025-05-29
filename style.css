@@ -55,7 +55,7 @@ html, body {
 .sidebar li { margin-bottom: 0; }
 .sidebar li > a {
   display: block;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.5;
   color: #f3f4f6;
   text-decoration: none;
@@ -113,7 +113,7 @@ html, body {
   margin: 1.5rem 0;
 }
 .content p {
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.6;
   margin-bottom: 1rem;
 }
@@ -212,7 +212,7 @@ html, body {
 /* 10) Details summary styling */
 .content details > summary {
   color: #ff0;
-  font-size: 13px;
+  font-size: 14px;
   padding: 0;
   cursor: pointer;
 }
@@ -236,7 +236,7 @@ details summary::marker                { font-size: 0; }
 /* style the summary line + custom arrow */
 details summary {
   cursor: pointer;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 400;
   color: #ff0;
   display: inline-flex;
@@ -256,9 +256,9 @@ details[open] summary::before {
 }
 
 /* Optional: style the content inside */
-details p {
+.content details p {
   margin: 0.5em 0 1em 1.2em;
-  font-size: 13px;
+  font-size: 14px;
   color: #fff;
 }
 
