@@ -257,7 +257,7 @@ details[open] summary::before {
 
 /* Optional: style the content inside */
 .content details p {
-  margin: 0.5em 0 1em 1.2em;
+  margin: 1rem 0 1rem 0;
   font-size: 14px;
   color: #fff;
 }
